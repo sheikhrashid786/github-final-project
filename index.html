@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        nav {
+            background: #222;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #searchInput {
+            margin-left: auto;
+            padding: 10px;
+            width: 220px;
+        }
+
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: #dff3ff;
+        }
+
+        .results {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+            width: 300px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #aaa;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+
+    <input type="text" id="searchInput" placeholder="Search destinations">
+    <button onclick="searchRecommendations()">Search</button>
+    <button onclick="clearSearch()">Clear</button>
+</nav>
+
+<section class="hero">
+    <h1>Travel Recommendation</h1>
+    <p>Explore beautiful destinations around the world.</p>
+</section>
+
+<div class="results" id="results">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach">
+        <h2>Beautiful Beach</h2>
+        <p>Relax and enjoy the beautiful beach.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57" alt="Tropical Beach">
+        <h2>Tropical Beach</h2>
+        <p>Enjoy a peaceful tropical beach destination.</p>
+    </div>
+</div>
+
+<script>
+function searchRecommendations() {
+    const search = document.getElementById("searchInput").value.toLowerCase();
+    const results = document.getElementById("results");
+
+    if (search.includes("beach")) {
+        results.innerHTML = `
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach">
+                <h2>Beautiful Beach</h2>
+                <p>Relax and enjoy the beautiful beach.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57" alt="Tropical Beach">
+                <h2>Tropical Beach</h2>
+                <p>Enjoy a peaceful tropical beach destination.</p>
+            </div>
+        `;
+    }
+}
+
+function clearSearch() {
+    document.getElementById("searchInput").value = "";
+    location.reload();
+}
+</script>
+
+</body>
+</html>
