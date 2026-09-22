@@ -99,7 +99,7 @@
 </div>
 
 <script>
-function searchRecommendations() {
+    function searchRecommendations() {
     const search = document.getElementById("searchInput").value.toLowerCase();
     const results = document.getElementById("results");
 
@@ -114,6 +114,19 @@ function searchRecommendations() {
                 <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57" alt="Tropical Beach">
                 <h2>Tropical Beach</h2>
                 <p>Enjoy a peaceful tropical beach destination.</p>
+            </div>
+        `;
+    } else if (search.includes("temple")) {
+        results.innerHTML = `
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523" alt="Temple">
+                <h2>Famous Temple</h2>
+                <p>Explore this beautiful and historic temple.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1548013146-72479768bada" alt="Temple">
+                <h2>Historic Temple</h2>
+                <p>Discover the architecture and history of this temple.</p>
             </div>
         `;
     }
