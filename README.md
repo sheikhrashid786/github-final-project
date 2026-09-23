@@ -1,21 +1,7 @@
-# Simple Interest Calculator
+# e-plantShopping
 
-A simple calculator that calculates the simple interest based on the principal amount, annual interest rate, and time period.
+## Paradise Nursery Shopping Application
 
-## Formula
+e-plantShopping is a React-based plant shopping application for Paradise Nursery.
 
-Simple Interest = (Principal × Rate × Time) / 100
-
-## Inputs
-
-- Principal amount
-- Annual interest rate
-- Time period
-
-## Output
-
-The calculator displays the calculated simple interest.
-
-## Usage
-
-Enter the principal amount, interest rate, and time period to calculate the simple interest.
+The application allows users to browse plants, add products to a shopping cart, update quantities, remove items, and view their cart.
