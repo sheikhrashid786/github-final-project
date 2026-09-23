@@ -6,47 +6,77 @@ function CartItem() {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
 
-  const total = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  const totalAmount = items.reduce(
+    (total, item) => total + item.price * item.quantity,
     0
   );
 
+  const handleQuantityChange = (id, quantity) => {
+    if (quantity >= 1) {
+      dispatch(
+        updateQuantity({
+          id: id,
+          quantity: quantity
+        })
+      );
+    }
+  };
+
   return (
-    <div>
+    <div className="cart-item">
       <h1>Shopping Cart</h1>
 
       {items.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p>Your shopping cart is empty.</p>
       ) : (
         <>
           {items.map((item) => (
-            <div key={item.id}>
-              <h2>{item.name}</h2>
-              <p>Price: ${item.price}</p>
-
-              <input
-                type="number"
-                min="1"
-                value={item.quantity}
-                onChange={(e) =>
-                  dispatch(
-                    updateQuantity({
-                      id: item.id,
-                      quantity: Number(e.target.value)
-                    })
-                  )
-                }
+            <div className="cart-product" key={item.id}>
+              <img
+                src={item.image}
+                alt={item.name}
+                width="150"
+                height="150"
               />
 
-              <p>Subtotal: ${item.price * item.quantity}</p>
+              <h2>{item.name}</h2>
 
-              <button onClick={() => dispatch(removeItem(item.id))}>
+              <p>Price: ${item.price}</p>
+
+              <label>
+                Quantity:
+                <input
+                  type="number"
+                  min="1"
+                  value={item.quantity}
+                  onChange={(e) =>
+                    handleQuantityChange(
+                      item.id,
+                      Number(e.target.value)
+                    )
+                  }
+                />
+              </label>
+
+              <p>
+                Subtotal: $
+                {(item.price * item.quantity).toFixed(2)}
+              </p>
+
+              <button
+                onClick={() => dispatch(removeItem(item.id))}
+              >
                 Remove
               </button>
             </div>
           ))}
 
-          <h2>Total: ${total}</h2>
+          <h2>
+            Total Amount: ${totalAmount.toFixed(2)}
+          </h2>
+
+          <button>Continue Shopping</button>
+          <button>Checkout</button>
         </>
       )}
     </div>
